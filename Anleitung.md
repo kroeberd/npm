@@ -1,19 +1,29 @@
+# Anleitung
+
+## Docker installieren
+```
 apt update && apt dist-upgrade -y && apt autoremove && apt autoclean -y
 
 apt install curl -y && apt install docker.io -y && systemctl enable docker
+```
 
+## Docker Compose Plugin installieren
+```
 curl -L https://github.com/docker/compose/releases/download/v2.17.3/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
 
 chmod +x /usr/local/bin/docker-compose
-
+```
+## Pfad für NPM erstellen
+```
 mkdir npm
 
 cd npm
 
 nano docker-compose.yml
+```
 
-
-######### in die Datei einfuegen #########
+Nach dem letzten Befehl sollte sich ein Texteditor öffnen. In diesen dann folgenden Text einfügen:
+```
 version: '3.8'
 services:
   app:
@@ -51,23 +61,29 @@ services:
       MYSQL_PASSWORD: 'npm'
     volumes:
       - ./mysql:/var/lib/mysql
+```
+Dann `nano` wieder mit Ctrl+O und Ctrl+X schließen.
 
+## Docker auf dem LXC lauffähig machen
+```
 systemctl stop docker
 
-cd
-
 nano /etc/docker/daemon.json
-
-######### in die Datei einfuegen #########
+```
+nun folgendes in die Datei einfügen:
+```
 {
   "storage-driver": "vfs"
 }
+```
+Dann `nano` wieder mit Ctrl+O und Ctrl+X schließen.
 
-cd npm
-
+Nun kann Docker wieder gestartet werden:
+```
 systemctl start docker
-
+```
+Jetzt kann auch der Docker Stack des Nginx Proxy Manager mit folgendem Befehl gestartet werden:
+```
 docker-compose up -d
-
-
-######### Fertig #########
+```
+Nun nur noch auf dem Webpanel (http://IP-des-LXCs:81/) des Nginx Proxy Managers Mail und Passwort ändern (default ist admin@example.com und changeme)
