@@ -1,4 +1,2 @@
 # npm
-Anleitung für NPM.auf.Ubuntu
-
-https://github.com/kroeberd/npm/blob/main/Anleitung
+Anleitung für NPM (NginxProxyManager) auf einem Ubuntu LXC
