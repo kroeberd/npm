@@ -1,2 +1,2 @@
 # npm
-Anleitung für NPM (NginxProxyManager) auf einem Ubuntu LXC
+Anleitung zur Installation von NPM (NginxProxyManager) auf einem Ubuntu LXC
