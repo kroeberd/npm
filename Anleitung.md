@@ -2,7 +2,7 @@
 
 ## Docker installieren
 ```
-apt update && apt dist-upgrade -y && apt autoremove && apt autoclean -y
+apt update && apt dist-upgrade -y && apt autoremove -y && apt autoclean -y
 
 apt install curl -y && apt install docker.io -y && systemctl enable docker
 ```
